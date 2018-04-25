@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios'>
+    <pages>
+        <page name='default-param'/>
+        <page name='designated init'/>
+        <page name='Ref-cycle'/>
+        <page name='copy-on-write'/>
+    </pages>
+</playground>
