@@ -6,5 +6,6 @@
         <page name='Ref-cycle'/>
         <page name='copy-on-write'/>
         <page name='Merge-sort'/>
+        <page name='SortDescriptor'/>
     </pages>
 </playground>
