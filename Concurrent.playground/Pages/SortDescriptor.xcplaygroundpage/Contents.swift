@@ -67,6 +67,24 @@ func makeDescriptor<Key,Value> (
     return { isAscending(key($0),key($1))}
 }
 
+func shift<T>(_ compare: @escaping SortDescriptor<T>) -> SortDescriptor<T?>{
+    return { l, r in
+        switch (l,r) {
+        case (nil, nil):
+            return false
+        case (nil, _):
+            return false
+        case (_, nil):
+            return true
+        case let (l?, r?):
+            return compare(l, r)
+        default:
+            fatalError()
+        }
+        
+    }
+}
+
 
 let stringsDescritor: SortDescriptor<Episode> = makeDescriptor(key: { $0.type }, {
     $0.localizedCompare($1) == .orderedAscending
@@ -75,6 +93,24 @@ let stringsDescritor: SortDescriptor<Episode> = makeDescriptor(key: { $0.type },
 let lengthsDescriptor: SortDescriptor<Episode> = makeDescriptor(key: {$0.length}, <)
 
 episodes.sorted(by: stringsDescritor).forEach({print("\nsingle\($0)")})
+
+infix operator |>: LogicalDisjunctionPrecedence
+
+func |> <T>(l: @escaping SortDescriptor<T>,
+            r: @escaping SortDescriptor<T>) -> SortDescriptor<T> {
+    return {
+        if l($0, $1) {
+            return true
+        }
+        if l($1, $0) {
+            return false
+        }
+        if r($0, $1) {
+            return true
+        }
+        return false
+    }
+}
 
 func combine<T>(rules: [SortDescriptor<T>]) -> SortDescriptor<T> {
     return { l,r in
@@ -92,4 +128,9 @@ func combine<T>(rules: [SortDescriptor<T>]) -> SortDescriptor<T> {
 
 let mixDescriptor = combine(rules: [stringsDescritor,lengthsDescriptor])
 episodes.sorted(by: mixDescriptor).forEach({print($0)})
+episodes.sorted(by: stringsDescritor |> lengthsDescriptor).forEach({ print($0) })
 
+
+let nums = ["Five","2","3","1","Four"]
+let intDescriptor: SortDescriptor<String> = makeDescriptor(key: {Int($0)},shift(<))
+nums.sorted(by: intDescriptor).forEach({print($0)})
