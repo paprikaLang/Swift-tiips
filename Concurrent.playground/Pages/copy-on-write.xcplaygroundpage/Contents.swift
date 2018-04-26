@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 //swift的数组是值类型,符合copy on write原则. 数组只是保存一个引用的地址,数组里的元素存放在另外的堆内存中.只有引用的对象修改了数组,这个对象才会拷贝一份数组进行操作.
 let num1 = [1,2,3,4,5]

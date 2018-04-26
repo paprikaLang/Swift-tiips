@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 extension Optional {
     func withExtendedLifetime(_ body:(Wrapped) -> Void) {

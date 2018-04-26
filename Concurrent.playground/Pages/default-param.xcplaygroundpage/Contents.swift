@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 //定义在extension中的方法是不能被重定义的
 extension Shape {
