@@ -7,5 +7,6 @@
         <page name='copy-on-write'/>
         <page name='Merge-sort'/>
         <page name='SortDescriptor'/>
+        <page name='Delegate&amp;callback'/>
     </pages>
 </playground>

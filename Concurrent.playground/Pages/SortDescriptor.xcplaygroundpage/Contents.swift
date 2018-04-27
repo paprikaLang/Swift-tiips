@@ -134,3 +134,4 @@ episodes.sorted(by: stringsDescritor |> lengthsDescriptor).forEach({ print($0) }
 let nums = ["Five","2","3","1","Four"]
 let intDescriptor: SortDescriptor<String> = makeDescriptor(key: {Int($0)},shift(<))
 nums.sorted(by: intDescriptor).forEach({print($0)})
+
