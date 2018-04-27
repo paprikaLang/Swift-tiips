@@ -8,5 +8,6 @@
         <page name='Merge-sort'/>
         <page name='SortDescriptor'/>
         <page name='Delegate&amp;callback'/>
+        <page name='autoclosure&amp;escaping'/>
     </pages>
 </playground>
