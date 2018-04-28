@@ -57,7 +57,7 @@ class subClass: Base {
     }
 }
 extension subClass {
-    //NSOject的派生类extension方法是message dispatch,不会储存在value witness table 里,它的原生方法也要是dynamic修饰的,否则是table dispatch.
+    //NSOject的派生类extension方法是message dispatch,不会储存在 witness table 里,它的原生方法也要是dynamic修饰的,否则是table dispatch.
     override func ccc() {
         print("sub:ccc")
     }
@@ -142,7 +142,7 @@ class ViewController: UIViewController {
         s.aaa() //Base hahh
         
         let sub: MyProtocol = s
-        //尽管base基类没有实现bbb方法但是还是继承了protocol内定义的方法在extension中的默认实现.是table dispatch, 但是不用像继承方法一样override,是因为protocol有自己的protocol witness table,和value witness table 相呼应. 不过可以在继承关系的class里override protocol定义的方法,比如base实现了aaa,那 sub自己实现aaa时就要加上override了
+        //尽管base基类没有实现bbb方法但是还是继承了protocol内定义的方法在extension中的默认实现.不过可以在继承关系的class里override protocol定义的方法,比如base实现了aaa,那 sub自己实现aaa时就要加上override了
         s.bbb()  //sub:waaa
         sub.bbb() //waaa
         b.bbb()   //waaa
