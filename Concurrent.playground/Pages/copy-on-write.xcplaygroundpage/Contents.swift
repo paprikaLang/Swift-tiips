@@ -33,8 +33,8 @@ struct MyArray {
         self.data = Box(data.mutableCopy() as! NSMutableArray)
     }
     mutating func append(element: Any) {
-        //3.执行dataCOW.insert时,已经调用了dataCOW的get方法了,也就是深度拷贝完成.但是在不修改也就是没有调用dataCOW.insert时,还是用引用类型data来引用它的指针了.这样就实现了隐藏引用类型NSMutableArray用于数据存储而完成了 copy on write 的事实.
-        //但结果还是有一个缺陷,就是在for循环中,由于只有最后一个循环结果有用,而循环过程中所有的data拷贝就是浪费资源.
+        //3.执行dataCOW.insert时,已经调用了dataCOW的get方法了,也就是深度拷贝完成.但是在不修改也就是没有调用dataCOW.insert时,还是用引用类型data来引用它的指针了.这样就实现了隐藏引用类型NSMutableArray数据存储而实现了 copy on write 的事实.
+        //但结果还是有一个缺陷,就是在for循环中,只有最后一个循环结果有用,而循环过程中所有的data拷贝都是在浪费资源.
         dataCOW.insert(element,at: self.data.unbox.count)
     }
     

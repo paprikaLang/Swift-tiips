@@ -9,6 +9,7 @@
         <page name='SortDescriptor'/>
         <page name='Delegate&amp;callback'/>
         <page name='autoclosure'/>
-        <page name='userdefault'/>
+        <page name='Hashable'/>
+        <page name='Userdefaults'/>
     </pages>
 </playground>
