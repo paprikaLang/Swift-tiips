@@ -4,13 +4,14 @@ import UIKit
 /*
  由于swift是一门集成了很多编程范式的语言,面向对象,面向协议,面向过程的.为了支持这些编程范式,尝试了所有常见的派发方式
  
- 1.direct dispatch  面向过程     struct,     protocol 和 class 的 extension,不能重写定义在extension中的方法,非继承. 继承方法的参数在有默认值的情况下容易出错,可以在基类的extension方法中添加这个参数,方法内部再调用继承方法
+ 1.direct dispatch  面向过程     struct,  protocol 和 class 的 extension.不能重写定义在extension中的方法,非继承(继承方法的参数在有默认值的情况下容易出错,可以在基类的extension方法中添加这个参数,方法内部再调用继承方法)
+ 
  方法的地址直接编译到汇编指令里,称作 direct dispatch , 可以inline优化.
  
  
  2.table dispatch  witness table  面向对象 多态 虚函数表  protocol 和 class (除extension,不支持运行时获取函数内存地址)
- 把方法地址放在一个数据结构里,汇编里的地址是这个数据结构(表格)的,还有函数位置的偏移.而调用方法的地址是在运行时获得的
- 通过table间接内存地址获取调用地址的方法, 称作 table dispatch. 这也是最传统的多态实现方式
+ 把一个class里的所有方法的地址放在一个数据结构里,通过这个数据结构(witness table)的地址偏移量获取每个方法的实际地址.调用方法的地址是在运行时获得的
+ 通过table内存地址获取调用方法的地址, 称作 table dispatch. 这也是最传统的多态实现方式
  
  3.message dispatch  @objc
  
