@@ -11,5 +11,6 @@
         <page name='autoclosure'/>
         <page name='Hashable'/>
         <page name='Userdefaults'/>
+        <page name='Indirect enum'/>
     </pages>
 </playground>
